@@ -1,8 +1,0 @@
-<section id="lrstudy">
-<p class="eyebrow">Mohamed Elsaeed Salah · Hyperparameter study</p>
-<h2>Learning rate 0.002 works best for the attention model</h2>
-<img src="/_blob/068e3e71f0cb9397241a296ed35dea24" alt="Left: validation CER per epoch for five learning-rate runs. Right: best validation CER by learning rate - 16.68 percent at 0.0005, 16.20 at 0.001 and a mean of 14.74 over three seeds at 0.002." class="fig" style="width:1664px; height:440px;">
-<p style="font-size:28px;">0.0005 → 16.68% · 0.001 → 16.20% · <b>0.002 → 14.74 ± 0.48%</b> (3 seeds) - batch 8, 10 epochs, validation CER</p>
-<div class="footer"><span>src/hyperparameter_search.py · results/tables/hyperparameter_study.md</span><span>8</span></div>
-<aside>Mohamed Elsaeed Salah (≈1 min). We screened two rates on seed 0, then confirmed the winner on three seeds. The final reported attention runs kept lr 1e-3; retraining them at 0.002 is a cheap improvement we list as future work. Then hand over to Nardeen Samy.</aside>
-</section>
