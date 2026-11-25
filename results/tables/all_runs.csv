@@ -1,0 +1,24 @@
+run,group,model,seed (label),seed (logged arg),epochs,batch_size,lr,augment,params,best_epoch,best_val_cer_%,val_wer_at_best_%,train_time_s,test_cer_%,test_wer_%
+baseline_seed0,main,CNN-GRU,0,0.0,20,8,0.001,False,472464,17,25.348,67.685,916.87,30.67,73.545
+baseline_seed1,main,CNN-GRU,1,2.0,20,8,0.001,False,472464,16,22.853,63.629,936.654,28.289,69.577
+baseline_seed2,main,CNN-GRU,2,2.0,20,8,0.001,False,472464,16,22.201,62.506,941.153,28.037,69.5
+bilstm_seed0,main,CNN-BiLSTM,0,0.0,20,8,0.001,False,1221264,19,18.655,53.596,1020.646,24.531,62.385
+bilstm_seed1,main,CNN-BiLSTM,1,1.0,20,8,0.001,False,1221264,17,19.066,54.315,1042.779,25.052,63.303
+bilstm_seed2,main,CNN-BiLSTM,2,2.0,20,8,0.001,False,1221264,17,18.681,54.831,1049.733,24.738,62.612
+attention_seed0,main,CNN-BiLSTM + Attention,0,0.0,10,4,0.001,False,1484944,10,16.538,49.955,594.398,21.868,57.873
+attention_seed1,main,CNN-BiLSTM + Attention,1,1.0,10,4,0.001,False,1484944,9,16.614,50.348,594.007,22.247,58.258
+attention_seed2,main,CNN-BiLSTM + Attention,2,2.0,10,4,0.001,False,1484944,9,16.999,50.562,616.174,22.74,59.265
+attention_aug_seed0,main,Attention + Augmentation,0,0.0,10,4,0.001,True,1484944,9,14.814,46.371,767.241,19.967,54.387
+attention_aug_seed1,main,Attention + Augmentation,1,1.0,10,4,0.001,True,1484944,10,13.46,43.787,764.188,18.376,51.352
+attention_aug_seed2,main,Attention + Augmentation,2,2.0,10,4,0.001,True,1484944,10,14.515,46.191,714.001,19.827,55.1
+ablation_bilstm_seed0,ablation,"CNN-BiLSTM (no attention, ablation)",0,0.0,10,4,0.001,False,1221264,10,17.857,52.27,594.059,,
+ablation_bilstm_seed1,ablation,"CNN-BiLSTM (no attention, ablation)",1,1.0,10,4,0.001,False,1221264,10,18.636,54.27,586.789,,
+ablation_bilstm_seed2,ablation,"CNN-BiLSTM (no attention, ablation)",2,2.0,10,4,0.001,False,1221264,10,18.014,52.573,587.231,,
+hp_attention_lr0005,hyperparameter,CNN-BiLSTM + Attention,0,0.0,10,8,0.0,False,1484944,9,16.68,50.101,684.195,,
+hp_attention_lr001,hyperparameter,CNN-BiLSTM + Attention,0,0.0,10,8,0.001,False,1484944,10,16.198,50.843,670.681,,
+hp_attention_lr002,hyperparameter,CNN-BiLSTM + Attention,0,0.0,10,8,0.002,False,1484944,9,14.995,47.539,679.471,,
+hp_attention_lr002_seed1,hyperparameter,CNN-BiLSTM + Attention,1,1.0,10,8,0.002,False,1484944,9,15.059,46.955,671.451,,
+hp_attention_lr002_seed2,hyperparameter,CNN-BiLSTM + Attention,2,2.0,10,8,0.002,False,1484944,10,14.17,45.438,685.467,,
+attention_smoke,smoke test,CNN-BiLSTM + Attention,0,0.0,1,2,0.001,False,1484944,1,95.273,100.101,9.057,,
+bilstm_smoke_test,smoke test,CNN-BiLSTM,0,0.0,1,8,0.001,False,1221264,1,100.0,100.0,7.307,,
+trocr_best,main,TrOCR,0,,5,2,0.0,False,384864768,3,4.856,11.404,4050.0,7.017,14.866

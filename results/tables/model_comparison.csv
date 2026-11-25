@@ -1,0 +1,6 @@
+Model,Runs,Params,Val CER %,Test CER %,Test WER %
+CNN-GRU,3,472464,23.47 ± 1.66,29.00 ± 1.45,70.87 ± 2.31
+CNN-BiLSTM,3,1221264,18.80 ± 0.23,24.77 ± 0.26,62.77 ± 0.48
+CNN-BiLSTM + Attention,3,1484944,16.72 ± 0.25,22.29 ± 0.44,58.47 ± 0.72
+Attention + Augmentation,3,1484944,14.26 ± 0.71,19.39 ± 0.88,53.61 ± 1.99
+TrOCR (fine-tuned),1,384864768,4.86,7.02,14.87

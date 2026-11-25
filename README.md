@@ -27,6 +27,27 @@ The main objectives are:
 
 ---
 
+## Deliverables map
+
+| # | Deliverable | Where |
+|---|---|---|
+| 1 | Source code | [`src/`](src), [`trocr_train.py`](trocr_train.py), [`demo/`](demo), [`scripts/`](scripts) |
+| 2 | Dataset documentation | [`docs/DATASET.md`](docs/DATASET.md) |
+| 3 | Trained models | [`checkpoints/`](checkpoints) + [`docs/MODELS.md`](docs/MODELS.md) (TrOCR on Google Drive, see §12) |
+| 4 | Experiment results | [`experiments/`](experiments) (raw logs), [`results/tables/`](results/tables), [`results/figures/`](results/figures) |
+| 5 | Model comparison + hypothesis verdicts | [`docs/RESULTS.md`](docs/RESULTS.md) §5, [`results/tables/hypothesis_verdicts.md`](results/tables/hypothesis_verdicts.md) |
+| 6 | Error analysis | [`results/error_analysis/trocr/ERROR_ANALYSIS.md`](results/error_analysis/trocr/ERROR_ANALYSIS.md), [`docs/RESULTS.md`](docs/RESULTS.md) §6 |
+| 7 | Ablation study | [`results/tables/ablation.md`](results/tables/ablation.md), [`docs/RESULTS.md`](docs/RESULTS.md) §7 |
+| 8 | Technical report | [`report/`](report) |
+| 9 | Presentation | [`presentation/`](presentation) (15 slides, one section per member) |
+| 10 | Live demonstration | [`demo/app.py`](demo/app.py) + run sheet [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md) |
+| 11 | README | this file |
+| 12 | Contribution log + peer evaluation | [`contributions/`](contributions) |
+
+Full checklist: [`DELIVERABLES.md`](DELIVERABLES.md).
+
+---
+
 ## 2. Dataset
 
 **Dataset:** IAM Handwriting Database  
@@ -47,7 +68,7 @@ The data-loading implementation is available in:
 
 `src/datasets/iam.py`
 
-Raw dataset files are not included in this repository.
+Raw dataset files are not included in this repository. Sources, versions, licences, preprocessing and split strategy: [`docs/DATASET.md`](docs/DATASET.md).
 
 ---
 
@@ -92,10 +113,11 @@ Additional experiments include BiLSTM ablation studies and multiple random seeds
 
 | Parameter | Configuration |
 |---|---|
-| Optimizer | AdamW |
-| Batch size | 8 for hyperparameter experiments |
-| Attention training epochs | 10 |
-| Hyperparameter seeds | 0, 1, 2 |
+| Optimizer | Adam, lr 1e-3, gradient clipping 5.0 |
+| CNN-GRU / CNN-BiLSTM | 20 epochs, batch size 8 |
+| Attention (± augmentation) and BiLSTM ablation | 10 epochs, batch size 4 |
+| Learning-rate study | 10 epochs, batch size 8 |
+| Seeds | 0, 1, 2 for every reported model |
 | Loss function | CTC |
 | Evaluation metrics | CER and WER |
 
@@ -218,55 +240,33 @@ Lower WER indicates better word recognition.
 
 ```text
 HTR_Project/
-│
-├── checkpoints/
-│   ├── CTC model checkpoints
-│   └── trocr_processor/
-│
-├── configs/
-│   └── Experiment configurations
-│
-├── contributions/
-│   └── contributions.md
-│
-├── data/
-│   └── get_iam_sample.py
-│
-├── demo/
-│   └── app.py
-│
-├── experiments/
-│   ├── Training experiment logs
-│   ├── Test evaluation results
-│   ├── Hyperparameter study results
-│   └── TrOCR predictions and history
-│
-├── notebooks/
-│   └── htr_original_experiments.ipynb
-│
-├── report/
-│   ├── HTR_AI403_Technical_Report_Formatted.docx
-│   └── HTR_AI403_Technical_Report_Formatted.pdf
-│
+├── checkpoints/            CTC checkpoints (.pt) + trocr_processor/  (trocr_best.pt: Google Drive)
+├── configs/                Per-run configuration summaries
+├── contributions/          Team summary, contribution-log and peer-evaluation templates
+├── data/get_iam_sample.py  Saves one IAM test line for the demo
+├── demo/app.py             Streamlit demo (all models + Compare All)
+├── docs/                   DATASET.md, MODELS.md, RESULTS.md, DEMO_SCRIPT.md
+├── experiments/            Raw logs: training histories, test results, TrOCR predictions
+├── notebooks/              Original exploratory notebook
+├── presentation/           Slide deck source (project/deck.json, slides/*.html)
+├── report/                 Technical report (.docx / .pdf)
+├── results/
+│   ├── tables/             all_runs, model_comparison, ablation, hyperparameter_study, hypothesis_verdicts
+│   ├── figures/            01-08 *.png graphs
+│   └── error_analysis/     per-model ERROR_ANALYSIS.md, per-line CSV, graphs
+├── scripts/                reproduce_all.ps1 / reproduce_all.sh
 ├── src/
-│   ├── datasets/
-│   │   └── iam.py
-│   ├── models/
-│   │   ├── baseline.py
-│   │   ├── crnn.py
-│   │   └── attention.py
-│   ├── aggregate_results.py
-│   ├── ctc_decode.py
-│   ├── evaluate.py
-│   ├── hyperparameter_search.py
-│   ├── test.py
-│   └── train.py
-│
-├── test_samples/
-├── requirements.txt
-├── README.md
-├── trocr_train.py
-└── vocab.json
+│   ├── datasets/iam.py     Loading, preprocessing, augmentation
+│   ├── models/             baseline.py (CNN-GRU), crnn.py (CNN-BiLSTM), attention.py
+│   ├── analysis/           make_results.py, error_analysis.py, predict_ctc.py
+│   ├── diagnostics/        diagnose_model.py (quick 20-line sanity check)
+│   ├── train.py  test.py  evaluate.py  ctc_decode.py
+│   ├── aggregate_results.py  hyperparameter_search.py
+├── test_samples/           Demo image + ground truth
+├── trocr_train.py          TrOCR fine-tuning
+├── vocab.json              CTC character vocabulary
+├── DELIVERABLES.md         12-item submission checklist
+└── requirements.txt
 ```
 
 ---
@@ -311,31 +311,37 @@ Run commands from the project root.
 Baseline:
 
 ```bash
-python src/train.py --model baseline --epochs 20 --batch_size 8 --seed 0 --name baseline_seed0
+python -m src.train --model baseline --epochs 20 --batch_size 8 --seed 0 --name baseline_seed0
 ```
 
 BiLSTM:
 
 ```bash
-python src/train.py --model bilstm --epochs 20 --batch_size 8 --seed 0 --name bilstm_seed0
+python -m src.train --model bilstm --epochs 20 --batch_size 8 --seed 0 --name bilstm_seed0
 ```
 
 Attention:
 
 ```bash
-python src/train.py --model attention --epochs 10 --batch_size 8 --seed 0 --name attention_seed0
+python -m src.train --model attention --epochs 10 --batch_size 4 --seed 0 --name attention_seed0
 ```
 
 Attention with augmentation:
 
 ```bash
-python src/train.py --model attention --epochs 10 --batch_size 8 --seed 0 --augment --name attention_aug_seed0
+python -m src.train --model attention --epochs 10 --batch_size 4 --seed 0 --augment --name attention_aug_seed0
+```
+
+Ablation (BiLSTM without attention, same budget as the attention runs):
+
+```bash
+python -m src.train --model bilstm --epochs 10 --batch_size 4 --seed 0 --name ablation_bilstm_seed0
 ```
 
 ### Run the hyperparameter experiments
 
 ```bash
-python src/hyperparameter_search.py
+python -m src.hyperparameter_search
 ```
 
 This runs the five recorded learning-rate and random-seed configurations.
@@ -350,7 +356,26 @@ TrOCR fine-tuning requires substantial GPU memory and computational resources.
 
 ### Run evaluation
 
-The CTC evaluation scripts are available in `src/test.py` and `src/evaluate.py`.
+```bash
+python -m src.test --model attention_aug --seed 1     # one checkpoint on the test split
+python -m src.aggregate_results                       # mean ± SD over seeds
+```
+
+> Always run scripts **from the project root with `python -m`**. Running `python src/train.py` directly fails with `No module named 'src'`, and adding `src/` to the path makes the folder `src/datasets/` shadow the Hugging Face `datasets` package.
+
+### Rebuild all tables, graphs and the error analysis (no GPU needed)
+
+```bash
+pip install matplotlib pandas tabulate
+python -m src.analysis.make_results
+python -m src.analysis.error_analysis --predictions experiments/trocr_test_predictions.json --name trocr --label TrOCR
+```
+
+### Reproduce everything end to end
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scriptseproduce_all.ps1            # add -SkipTraining to only evaluate
+```
 
 ### Launch the Streamlit demo
 

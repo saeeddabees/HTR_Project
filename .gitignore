@@ -39,3 +39,5 @@ data/cache/
 trocr_best.pt
 **/trocr_best.pt
 /checkpoints/trocr_best.pt
+# Archived test results from re-runs
+experiments/_old_test_results/

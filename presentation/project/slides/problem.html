@@ -1,0 +1,16 @@
+<section id="problem">
+<p class="eyebrow">Member A · Problem and hypotheses</p>
+<h2>Read one line of handwriting, output the text</h2>
+<div class="row" style="align-items:center; gap:40px;">
+<img src="/_blob/2e626293622ab948fb9d0e1fe5ae76ba" alt="An IAM handwritten test line reading: assuredness Bella Bella Marie (Parlophone), a lively song that changes tempo mid-way." style="width:1000px; height:120px; object-fit:contain; background:#FFFFFF; border-radius:12px;">
+<p style="font-size:28px; width:620px; color:var(--soft);">→ “assuredness " Bella Bella Marie " ( Parlophone ) , a lively song that changes tempo mid-way .”</p>
+</div>
+<div class="row">
+<div class="card rise" style="--i:0;"><h3>H1</h3><p class="txt">A bidirectional LSTM beats a one-way GRU baseline.</p></div>
+<div class="card rise" style="--i:1;"><h3>H2</h3><p class="txt">Self-attention on top of the BiLSTM lowers error further.</p></div>
+<div class="card rise" style="--i:2;"><h3>H3</h3><p class="txt">Training-only image augmentation improves generalisation.</p></div>
+<div class="card rise" style="--i:3;"><h3>H4</h3><p class="txt">A fine-tuned pretrained TrOCR beats every custom CTC model.</p></div>
+</div>
+<div class="footer"><span>Metrics: character error rate (CER) and word error rate (WER) - lower is better</span><span>2</span></div>
+<aside>Member A (≈1 min). Offline, line-level HTR: input is an image of one handwritten line, output is a variable-length character sequence, with no character segmentation given. Four hypotheses drive the whole project; every later slide tests one of them. CER = character edits / reference characters; WER the same on words.</aside>
+</section>

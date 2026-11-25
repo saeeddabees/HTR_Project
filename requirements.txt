@@ -11,3 +11,6 @@ streamlit
 safetensors
 tqdm
 jiwer
+matplotlib
+pandas
+tabulate

@@ -78,7 +78,7 @@ for index, exp in enumerate(experiments, start=1):
 
     command = [
         sys.executable,
-        "src/train.py",
+        "-m", "src.train",
         "--model", "attention",
         "--epochs", "10",
         "--lr", exp["lr"],

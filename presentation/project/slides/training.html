@@ -1,0 +1,19 @@
+<section id="training">
+<p class="eyebrow">Member B · Training protocol</p>
+<h2>Three seeds per model, chosen on validation CER</h2>
+<div class="row" style="gap:48px;">
+<div class="col" style="flex:0.9;">
+<ul class="pts">
+<li>CTC loss, Adam, lr 1e-3, gradient clip 5</li>
+<li>GRU / BiLSTM: 20 epochs, batch 8</li>
+<li>Attention runs: 10 epochs, batch 4</li>
+<li>Seeds 0, 1, 2 → report mean ± SD</li>
+<li>Best-validation checkpoint → one test pass</li>
+</ul>
+<p class="small">Every run is logged to experiments/*.json - 23 runs in total.</p>
+</div>
+<img src="/_blob/072461042c2f58b5188ee66807239885" alt="Validation CER per epoch for the four CTC models. GRU ends at 23.7 percent after 20 epochs, BiLSTM at 19.2, attention at 17.1 and attention with augmentation at 14.3 after 10 epochs." class="fig" style="width:920px; height:510px;">
+</div>
+<div class="footer"><span>src/train.py · results/figures/01_val_cer_curves.png</span><span>6</span></div>
+<aside>Member B (≈1 min), then hand over to Member C. The curves show the mean of three seeds with a min-max band. Attention models converge faster per epoch, so 10 epochs were enough. Because the GRU/BiLSTM main runs used a different budget, we also ran a matched-budget ablation - next slide.</aside>
+</section>
