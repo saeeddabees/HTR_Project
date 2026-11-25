@@ -1,474 +1,425 @@
 # Handwritten Text Recognition (HTR)
 
-## Project Overview
+A Deep Learning project for recognizing handwritten text from line images using CNN-based sequence models, attention mechanisms, and Transformer architectures.
 
-This project focuses on **Handwritten Text Recognition (HTR)** using deep learning. It recognizes handwritten text from line images and converts it into machine-readable text.
+**Course:** Deep Learning – AI403  
+**Faculty:** Faculty of Computer Science and Artificial Intelligence, Pharos University in Alexandria  
+**Semester:** Fall 2026
 
-The project implements and compares multiple deep learning architectures, including CNN-based recurrent models with Connectionist Temporal Classification (CTC), an attention-based architecture, and a fine-tuned Transformer-based model (TrOCR).
+---
 
-An interactive web application built with Streamlit allows users to upload handwritten text-line images, select recognition models, compare predictions, and view inference times.
+## 1. Project Overview
 
-## Models
+Handwritten Text Recognition (HTR) is the task of converting handwritten text images into machine-readable text.
 
-The project implements the following model architectures:
+This project develops and compares multiple deep learning approaches for handwritten text-line recognition using the IAM dataset.
 
-### 1. Baseline CNN-GRU + CTC
-- CNN for visual feature extraction.
-- GRU for sequential feature processing.
-- CTC loss for sequence alignment and recognition.
+The project includes traditional CNN-recurrent architectures, attention-based sequence modeling, data augmentation, and a pretrained Transformer model (TrOCR).
 
-### 2. CNN-BiLSTM + CTC
-- CNN for feature extraction.
-- Bidirectional LSTM for processing sequential features in both directions.
-- CTC loss for text recognition.
+The main objectives are:
 
-### 3. CNN-BiLSTM + Multi-Head Attention + CTC
-- CNN and BiLSTM for feature extraction and sequence modeling.
-- Multi-Head Self-Attention to capture relationships across the sequence.
-- Residual connections and Layer Normalization.
-- CTC loss for sequence prediction.
+- Implement and compare multiple deep learning architectures.
+- Investigate the effect of attention mechanisms.
+- Study the impact of data augmentation.
+- Perform hyperparameter experiments.
+- Fine-tune a pretrained Transformer model.
+- Evaluate all approaches using Character Error Rate (CER) and Word Error Rate (WER).
 
-### 4. TrOCR
-- Pretrained model: `microsoft/trocr-base-stage1`.
-- Vision Encoder-Decoder Transformer architecture.
-- Fine-tuned on the IAM handwritten text-line dataset.
+---
 
-### Additional Experiments
-- Attention model with data augmentation.
-- BiLSTM ablation experiments.
-- Multiple random seeds for selected experiments.
+## 2. Dataset
 
-## Dataset
+**Dataset:** IAM Handwriting Database  
+**Hugging Face:** `Teklia/IAM-line`
 
-The project uses the **IAM Handwriting Database**, accessed through Hugging Face:
+The dataset contains handwritten text-line images paired with their corresponding transcriptions.
 
-`Teklia/IAM-line`
+| Split | Number of samples |
+|---|---:|
+| Training | 6,482 |
+| Validation | 976 |
+| Test | 2,915 |
+| **Total** | **10,373** |
 
-The dataset contains handwritten text-line images and their corresponding transcriptions.
+The dataset is loaded through the Hugging Face `datasets` library.
 
-The dataset is downloaded automatically by the data-loading code when required.
-
-The data-loading implementation is located in:
+The data-loading implementation is available in:
 
 `src/datasets/iam.py`
 
-The dataset is divided into training, validation, and test subsets. The vocabulary for the CTC models is constructed using the training data.
-
 Raw dataset files are not included in this repository.
 
-## Project Structure
+---
 
-```text
-HTR_Project/
-│
-├── README.md
-├── requirements.txt
-├── vocab.json
-├── .gitignore
-├── trocr_train.py
-│
-├── configs/
-│   ├── baseline_seed0.json
-│   ├── bilstm_seed0.json
-│   ├── attention_seed0.json
-│   ├── attention_seed1.json
-│   ├── attention_seed2.json
-│   ├── attention_aug_seed0.json
-│   ├── attention_aug_seed1.json
-│   ├── attention_aug_seed2.json
-│   ├── ablation_bilstm_seed0.json
-│   ├── ablation_bilstm_seed1.json
-│   ├── ablation_bilstm_seed2.json
-│   ├── trocr_corrected_seed0.json
-│   └── trocr_finetuning_summary.json
-│
-├── data/
-│
-├── checkpoints/
-│   ├── baseline_seed0.pt
-│   ├── bilstm_seed0.pt
-│   ├── attention_seed0.pt
-│   ├── attention_seed1.pt
-│   ├── attention_seed2.pt
-│   ├── attention_aug_seed0.pt
-│   ├── attention_aug_seed1.pt
-│   ├── attention_aug_seed2.pt
-│   ├── ablation_bilstm_seed0.pt
-│   ├── ablation_bilstm_seed1.pt
-│   ├── ablation_bilstm_seed2.pt
-│   ├── attention_smoke.pt
-│   ├── bilstm_smoke_test.pt
-│   ├── trocr_best.pt
-│   └── trocr_processor/
-│       ├── processor_config.json
-│       ├── preprocessor_config.json
-│       ├── tokenizer.json
-│       └── tokenizer_config.json
-│
-├── experiments/
-│   ├── Training experiment logs (.json)
-│   ├── TrOCR training history
-│   └── Test predictions
-│
-├── src/
-│   ├── ctc_decode.py
-│   ├── evaluate.py
-│   ├── train.py
-│   ├── test.py
-│   │
-│   ├── datasets/
-│   │   └── iam.py
-│   │
-│   └── models/
-│       ├── baseline.py
-│       ├── crnn.py
-│       └── attention.py
-│
-├── demo/
-│   └── app.py
-│
-├── test_samples/
-│   ├── iam_test_sample.png
-│   └── iam_test_sample.txt
-│
-├── report/
-│
-└── contributions/
-```
+## 3. Implemented Models
 
-*Note: The structure shows the main project files. Additional experiment logs and checkpoints are preserved in their respective folders. TrOCR epoch-specific checkpoints are generated during training.*
+### 3.1 Baseline: CNN-GRU + CTC
 
-## Installation
+- CNN for visual feature extraction.
+- GRU for sequential feature modeling.
+- Connectionist Temporal Classification (CTC) for sequence alignment and recognition.
 
-### 1. Clone the repository
+### 3.2 CNN-BiLSTM + CTC
 
-```bash
-git clone YOUR_REPOSITORY_URL
-cd HTR_Project
-```
+- CNN-based visual feature extraction.
+- Bidirectional LSTM for sequence modeling.
+- CTC loss for text recognition.
 
-### 2. Create a virtual environment
+### 3.3 CNN-BiLSTM + Multi-Head Attention + CTC
 
-```bash
-python -m venv venv
-```
+- CNN and BiLSTM feature extraction.
+- Multi-Head Self-Attention to capture relationships between sequence positions.
+- Residual connections and Layer Normalization.
+- CTC-based sequence prediction.
 
-Activate on Windows:
+### 3.4 Attention + Data Augmentation
 
-```powershell
-venv\Scripts\activate
-```
+An enhanced version of the attention-based architecture using data augmentation during training to improve generalization and recognition performance.
 
-### 3. Install dependencies
+### 3.5 TrOCR
 
-```bash
-pip install -r requirements.txt
-```
+- Pretrained model: `microsoft/trocr-base-stage1`
+- Vision Encoder-Decoder Transformer architecture.
+- Fine-tuned on the IAM handwritten text-line dataset.
 
-For GPU support, install a PyTorch version compatible with the available CUDA environment.
+Additional experiments include BiLSTM ablation studies and multiple random seeds for selected architectures.
 
-The TrOCR training script also requires the `jiwer` package for calculating CER and WER.
+---
 
-## Dataset Preparation
+## 4. Experimental Setup
 
-The IAM dataset is accessed automatically through the Hugging Face `datasets` library.
+### CTC Models
 
-The data-loading implementation is located in:
-
-```text
-src/datasets/iam.py
-```
-
-The CTC data-loading pipeline handles:
-- Image preprocessing and resizing.
-- Grayscale conversion.
-- Text encoding.
-- Batch preparation and padding.
-- Optional data augmentation for training experiments.
-
-The dataset is divided into training, validation, and test subsets.
-
-Raw dataset files are not included in the repository.
-
-## Training
-
-The CTC-based models can be trained from the project root.
-
-### 1. Baseline CNN-GRU
-
-```bash
-python -m src.train --model baseline --epochs 20 --batch_size 8 --seed 0 --name baseline_seed0
-```
-
-### 2. CNN-BiLSTM
-
-```bash
-python -m src.train --model bilstm --epochs 20 --batch_size 8 --seed 0 --name bilstm_seed0
-```
-
-### 3. CNN-BiLSTM + Attention
-
-```bash
-python -m src.train --model attention --epochs 10 --batch_size 4 --seed 0 --name attention_seed0
-```
-
-### 4. Attention with Data Augmentation
-
-```bash
-python -m src.train --model attention --epochs 10 --batch_size 4 --seed 0 --augment --name attention_aug_seed0
-```
-
-To run experiments with different random seeds, change the `--seed` argument and use a unique experiment name.
-
-**Important:** Always use unique experiment names to avoid overwriting existing checkpoints and experiment logs.
-
-## TrOCR Fine-Tuning
-
-TrOCR is fine-tuned separately using the `trocr_train.py` script.
-
-The training process uses the pretrained model:
-
-`microsoft/trocr-base-stage1`
-
-### Training Configuration
-
-| Parameter | Value |
+| Parameter | Configuration |
 |---|---|
-| Dataset | Teklia/IAM-line |
-| Model | TrOCR-base-stage1 |
-| Epochs | Up to 5 |
+| Optimizer | AdamW |
+| Batch size | 8 for hyperparameter experiments |
+| Attention training epochs | 10 |
+| Hyperparameter seeds | 0, 1, 2 |
+| Loss function | CTC |
+| Evaluation metrics | CER and WER |
+
+### TrOCR Fine-Tuning
+
+| Parameter | Configuration |
+|---|---|
+| Pretrained model | microsoft/trocr-base-stage1 |
+| Training epochs | 5 |
 | Batch size | 2 |
-| Gradient accumulation steps | 4 |
+| Gradient accumulation | 4 |
 | Effective batch size | 8 |
 | Initial learning rate | 1e-5 |
-| Fine-tuning learning rate | 5e-6 |
+| Reduced learning rate | 5e-6 |
 | Optimizer | AdamW |
 | Weight decay | 0.01 |
-| Mixed precision | FP16 when CUDA is available |
+| Mixed precision | FP16 |
 | Gradient checkpointing | Enabled |
-| Early stopping patience | 2 |
-| Minimum learning rate | 1e-7 |
 | Maximum generated tokens | 128 |
-| Recorded training GPU | NVIDIA Tesla T4 |
+| GPU | NVIDIA Tesla T4 |
 
-### Running TrOCR Training
+The best TrOCR checkpoint was selected according to validation CER.
 
-Run the following command from the project root:
+---
 
-```bash
-python trocr_train.py
-```
+## 5. Hyperparameter Study
 
-The script automatically:
+A learning-rate study was conducted on the attention-based CTC architecture.
 
-1. Downloads and loads the IAM-line dataset.
-2. Loads the pretrained TrOCR processor and model.
-3. Prepares handwritten images and tokenized text labels.
-4. Fine-tunes the model using AdamW.
-5. Uses gradient accumulation and mixed-precision training when CUDA is available.
-6. Evaluates the model on the validation split after each epoch.
-7. Calculates Character Error Rate (CER) and Word Error Rate (WER).
-8. Saves epoch checkpoints and training history.
-9. Keeps the best checkpoint according to validation CER.
-10. Saves the TrOCR processor for later inference.
+The experiments evaluated three learning rates:
 
-### Learning Rate Schedule
+- 0.0005
+- 0.001
+- 0.002
 
-- Epochs 1 and 2 use an initial learning rate of `1e-5`.
-- Starting from Epoch 3, the learning rate is reduced to `5e-6`.
-- A ReduceLROnPlateau scheduler is used during the remaining training epochs.
-- Early stopping is applied when validation CER does not improve for the configured patience.
+The learning rates 0.0005 and 0.001 were screened using seed 0. The selected learning rate, 0.002, was then evaluated across three random seeds.
 
-### TrOCR Output Files
+| Experiment | Learning Rate | Seed | Best Validation CER |
+|---|---:|---:|---:|
+| hp_attention_lr0005 | 0.0005 | 0 | 16.68% |
+| hp_attention_lr001 | 0.001 | 0 | 16.20% |
+| hp_attention_lr002 | 0.002 | 0 | 15.00% |
+| hp_attention_lr002_seed1 | 0.002 | 1 | 15.06% |
+| hp_attention_lr002_seed2 | 0.002 | 2 | 14.17% |
 
-The training script generates:
+For the three runs using learning rate 0.002:
 
-```text
-checkpoints/
-├── trocr_best.pt
-├── trocr_corrected_epoch1.pt
-├── trocr_corrected_epoch2.pt
-├── trocr_corrected_epoch3.pt
-├── trocr_corrected_epoch4.pt
-├── trocr_corrected_epoch5.pt
-└── trocr_processor/
-    ├── processor_config.json
-    ├── preprocessor_config.json
-    ├── tokenizer.json
-    └── tokenizer_config.json
+**Mean validation CER: 14.74% ± 0.48 percentage points.**
 
-experiments/
-└── trocr_history.json
-```
+The experiment runner is available at:
 
-The number of epoch checkpoints depends on whether early stopping is triggered.
+`src/hyperparameter_search.py`
 
-The `trocr_best.pt` file stores the best model checkpoint according to validation CER.
+The recorded experiment results are stored in:
 
-The `trocr_history.json` file stores training loss, validation CER, validation WER, training time, and best epoch information.
+- `experiments/hyperparameter_study.csv`
+- `experiments/hyperparameter_study.json`
 
-**Note:** TrOCR fine-tuning requires substantial GPU memory and computational resources. The recorded training was performed on an NVIDIA Tesla T4 GPU.
+---
 
-## Model Evaluation
+## 6. Final Test Results
 
-The CTC-based models can be evaluated using:
+All CTC models were evaluated on the same held-out test set of 2,915 samples.
 
-### Baseline
+| Model | Test CER | Test WER |
+|---|---:|---:|
+| CNN-GRU + CTC | 29.00 ± 1.45% | 70.87 ± 2.31% |
+| CNN-BiLSTM + CTC | 24.77 ± 0.26% | 62.77 ± 0.48% |
+| CNN-BiLSTM + Attention + CTC | 22.29 ± 0.44% | 58.47 ± 0.72% |
+| Attention + Augmentation + CTC | 19.39 ± 0.88% | 53.61 ± 1.99% |
+| TrOCR | **7.0167%** | **14.8664%** |
 
-```bash
-python -m src.test --model baseline
-```
+**Reporting notes:**
 
-### BiLSTM
+- CTC results are reported as mean ± sample standard deviation across three random seeds.
+- TrOCR results represent one recorded fine-tuning run.
+- CTC checkpoints were selected using validation CER.
+- The test set was not used for checkpoint selection or hyperparameter tuning.
+- TrOCR achieved the best overall test performance.
+- Attention with augmentation achieved the best performance among the custom CTC architectures.
 
-```bash
-python -m src.test --model bilstm
-```
+---
 
-### Attention
+## 7. TrOCR Evaluation
 
-```bash
-python -m src.test --model attention
-```
-
-### Attention with Augmentation
-
-```bash
-python -m src.test --model attention_aug
-```
-
-The evaluation script reports:
-- Character Error Rate (CER).
-- Word Error Rate (WER).
-- Ground-truth transcriptions.
-- Model predictions.
-
-TrOCR uses a separate evaluation workflow because it is based on an encoder-decoder Transformer architecture rather than CTC.
-
-## Streamlit Demo
-
-Run the web application from the project root:
-
-```bash
-python -m streamlit run demo/app.py
-```
-
-The application provides:
-- Uploading handwritten text-line images.
-- Selecting a recognition model.
-- Generating recognized text.
-- Comparing predictions from different model architectures.
-- Displaying inference times.
-- Downloading recognized text.
-
-## Experimental Results
-
-The project evaluates models using Character Error Rate (CER) and Word Error Rate (WER).
-
-### CTC Model Validation Results
-
-| Model / Experiment | Validation CER |
-|---|---:|
-| Baseline CNN-GRU (Seed 0) | 25.35% |
-| CNN-BiLSTM (Seed 0) | 18.66% |
-| Attention (Seed 0) | 16.54% |
-| Attention (Seed 1) | 16.61% |
-| Attention (Seed 2) | 17.00% |
-| Attention + Augmentation (Seed 0) | 14.81% |
-| Attention + Augmentation (Seed 1) | 13.46% |
-| Attention + Augmentation (Seed 2) | 14.51% |
-
-### TrOCR Test Results
+The final TrOCR evaluation was performed on 2,915 test samples.
 
 | Metric | Result |
 |---|---:|
-| Test samples | 2,915 |
-| Test CER | 6.93% |
-| Test WER | 14.76% |
+| Test CER | 7.0167% |
+| Test WER | 14.8664% |
+| Best validation CER | 4.8557% |
+| Best validation WER | 11.4045% |
+| Best validation epoch | 3 |
 | Average inference time | 85.15 ms/image |
 | Evaluation batch size | 4 |
 | GPU | NVIDIA Tesla T4 |
 
-**Note:** CTC results above are validation results, while TrOCR results are test results. They are reported separately and should not be treated as a direct same-split comparison.
+The model achieved the best overall recognition performance among the evaluated approaches.
 
-## Evaluation Metrics
+---
+
+## 8. Evaluation Metrics
 
 ### Character Error Rate (CER)
 
-CER measures character-level recognition errors relative to the total number of characters in the ground-truth text.
+CER measures the number of character-level errors relative to the total number of characters in the ground-truth transcription.
 
 Lower CER indicates better character recognition.
 
 ### Word Error Rate (WER)
 
-WER measures word-level recognition errors relative to the total number of words in the ground-truth text.
+WER measures word-level recognition errors relative to the total number of words in the ground-truth transcription.
 
 Lower WER indicates better word recognition.
 
-## Experiments and Configurations
+---
 
-The `experiments/` directory stores training logs, evaluation records, and prediction outputs.
+## 9. Project Structure
 
-The `configs/` directory stores configuration metadata for the main experiments, including:
-- Model architecture.
-- Training epochs.
-- Batch size.
-- Learning rate.
-- Optimizer.
-- Random seed.
-- Data augmentation settings.
-- Model parameters.
-- Training time.
-- Recorded validation results.
+```text
+HTR_Project/
+│
+├── checkpoints/
+│   ├── CTC model checkpoints
+│   └── trocr_processor/
+│
+├── configs/
+│   └── Experiment configurations
+│
+├── contributions/
+│   └── contributions.md
+│
+├── data/
+│   └── get_iam_sample.py
+│
+├── demo/
+│   └── app.py
+│
+├── experiments/
+│   ├── Training experiment logs
+│   ├── Test evaluation results
+│   ├── Hyperparameter study results
+│   └── TrOCR predictions and history
+│
+├── notebooks/
+│   └── htr_original_experiments.ipynb
+│
+├── report/
+│   ├── HTR_AI403_Technical_Report_Formatted.docx
+│   └── HTR_AI403_Technical_Report_Formatted.pdf
+│
+├── src/
+│   ├── datasets/
+│   │   └── iam.py
+│   ├── models/
+│   │   ├── baseline.py
+│   │   ├── crnn.py
+│   │   └── attention.py
+│   ├── aggregate_results.py
+│   ├── ctc_decode.py
+│   ├── evaluate.py
+│   ├── hyperparameter_search.py
+│   ├── test.py
+│   └── train.py
+│
+├── test_samples/
+├── requirements.txt
+├── README.md
+├── trocr_train.py
+└── vocab.json
+```
 
-Smoke-test records are also preserved separately as diagnostic experiments.
+---
 
-These files are retained to support experiment tracking, reproducibility, and project evaluation.
+## 10. Installation
 
-## Checkpoints and Large Files
+### Clone the repository
 
-All experiment checkpoints are preserved in the `checkpoints/` directory.
+```bash
+git clone https://github.com/saeeddabees/HTR_Project.git
+cd HTR_Project
+```
 
-The TrOCR checkpoint (`trocr_best.pt`) is approximately 1.47 GB and should be hosted externally rather than committed directly to GitHub.
+### Create a virtual environment
 
-**TrOCR checkpoint download:**
+```bash
+python -m venv venv
+```
 
-[Add Google Drive download link here]
+Activate it on Windows:
 
-After downloading, place the checkpoint in:
+```powershell
+venv\Scripts\activate
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+For GPU training, install a PyTorch version compatible with your CUDA environment.
+
+---
+
+## 11. Training and Evaluation
+
+Run commands from the project root.
+
+### Train the CTC models
+
+Baseline:
+
+```bash
+python src/train.py --model baseline --epochs 20 --batch_size 8 --seed 0 --name baseline_seed0
+```
+
+BiLSTM:
+
+```bash
+python src/train.py --model bilstm --epochs 20 --batch_size 8 --seed 0 --name bilstm_seed0
+```
+
+Attention:
+
+```bash
+python src/train.py --model attention --epochs 10 --batch_size 8 --seed 0 --name attention_seed0
+```
+
+Attention with augmentation:
+
+```bash
+python src/train.py --model attention --epochs 10 --batch_size 8 --seed 0 --augment --name attention_aug_seed0
+```
+
+### Run the hyperparameter experiments
+
+```bash
+python src/hyperparameter_search.py
+```
+
+This runs the five recorded learning-rate and random-seed configurations.
+
+### Fine-tune TrOCR
+
+```bash
+python trocr_train.py
+```
+
+TrOCR fine-tuning requires substantial GPU memory and computational resources.
+
+### Run evaluation
+
+The CTC evaluation scripts are available in `src/test.py` and `src/evaluate.py`.
+
+### Launch the Streamlit demo
+
+```bash
+python -m streamlit run demo/app.py
+```
+
+The demo supports handwritten line-image input and model prediction comparison.
+
+---
+
+## 12. Checkpoints and Large Files
+
+CTC checkpoints and experiment artifacts are included in the repository.
+
+The large TrOCR model checkpoint (`trocr_best.pt`, approximately 1.43 GB) is hosted externally rather than committed to GitHub.
+
+**Google Drive download link:**  
+[Add the shared TrOCR checkpoint link here]
+
+After downloading, place the file at:
 
 ```text
 checkpoints/trocr_best.pt
 ```
 
-The accompanying processor files should be kept in:
+The TrOCR processor configuration files are included in:
 
 ```text
 checkpoints/trocr_processor/
 ```
 
-Other experiment checkpoints and logs should also be preserved for reproducibility and project evaluation.
+---
 
-## Hardware and Computational Resources
+## 13. Hardware and Computational Resources
 
-TrOCR fine-tuning and evaluation were performed using an NVIDIA Tesla T4 GPU.
+The recorded TrOCR fine-tuning and evaluation were performed on an NVIDIA Tesla T4 GPU.
 
-The recorded TrOCR training time was approximately 67.5 minutes.
+- TrOCR training time: approximately 67.5 minutes.
+- TrOCR average inference time: 85.15 ms/image.
+- CTC experiment training times and parameter counts are recorded in the corresponding experiment configuration and result files.
 
-The CTC experiments were performed using CUDA. Individual training times and parameter counts are recorded in the corresponding experiment logs.
+---
 
-## References
+## 14. Limitations and Future Work
+
+Potential future improvements include:
+
+- Expanding evaluation to additional handwriting datasets.
+- Improving robustness to highly variable handwriting styles.
+- Investigating stronger image augmentation strategies.
+- Exploring alternative decoding methods and language-model integration.
+- Optimizing inference speed and deployment efficiency.
+
+---
+
+## 15. References
 
 - IAM Handwriting Database: https://fki.tic.heia-fr.ch/databases/iam-handwriting-database
-- IAM-line Hugging Face dataset: https://huggingface.co/datasets/Teklia/IAM-line
-- TrOCR pretrained model: https://huggingface.co/microsoft/trocr-base-stage1
+- IAM-line Hugging Face Dataset: https://huggingface.co/datasets/Teklia/IAM-line
+- TrOCR Pretrained Model: https://huggingface.co/microsoft/trocr-base-stage1
 - PyTorch: https://pytorch.org/
 - Hugging Face: https://huggingface.co/
+
+---
 
 ## Acknowledgments
 
 This project was developed as part of the Deep Learning (AI403) course at the Faculty of Computer Science and Artificial Intelligence, Pharos University in Alexandria.
 
-**Course:** Deep Learning – AI403  
-**Semester:** Fall 2026  
-**Supervisor:** Dr. Sahar Ghanem
+**Course Instructor:** Dr. Sahar Ghanem  
+**Semester:** Fall 2026
