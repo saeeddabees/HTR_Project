@@ -6,7 +6,6 @@ Deliverable 12 - **one contribution log and one peer evaluation per student.**
 |---|---|---|
 | `contributions.md` | Team (together) | Who owned which part of the project - one table for the whole team |
 | `log_<name>.md` | Each student | Already created for each member with their tasks - fill in dates, **your real hours**, sections 4-5 and sign |
-| `peer_<name>.md` | Each student | Already created with your teammates' names - enter your ratings and comments |
 
 Tips
 

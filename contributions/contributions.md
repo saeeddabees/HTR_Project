@@ -29,7 +29,7 @@ Each member designed, trained (three seeds where applicable), evaluated and docu
 | Data pipeline and dataset documentation | `src/datasets/iam.py`, `data/get_iam_sample.py`, `docs/DATASET.md` |
 | Training and evaluation framework, CTC decoding, metrics | `src/train.py`, `src/test.py`, `src/evaluate.py`, `src/ctc_decode.py`, `src/aggregate_results.py` |
 | Results, graphs and error analysis | `src/analysis/`, `results/`, `docs/RESULTS.md` |
-| Streamlit demo | `demo/app.py`, `docs/DEMO_SCRIPT.md` |
+| Streamlit demo | `demo/app.py` |
 | Technical report | `report/` |
 | Presentation | `presentation/` |
 | README and repository organisation | `README.md`, `docs/MODELS.md`, `scripts/` |
@@ -45,13 +45,13 @@ Each member designed, trained (three seeds where applicable), evaluated and docu
 | All | 15 | Questions | 1:00 |
 | Mohamed Elsaeed Salah + Nardeen Samy | 13 | Live demo (separate 5 min) | 5:00 |
 
-## Individual logs and peer evaluations
+## Individual logs
 
-Each member fills in their own file; hours and ratings are entered by that member.
+Each member fills in their own file.
 
-| Member | Contribution log | Peer evaluation |
-|---|---|---|
-| Saeed Sherif Mohamed | `log_saeed_sherif_mohamed.md` | `peer_saeed_sherif_mohamed.md` |
-| Mahmoud Mohamed | `log_mahmoud_mohamed.md` | `peer_mahmoud_mohamed.md` |
-| Mohamed Elsaeed Salah | `log_mohamed_elsaeed_salah.md` | `peer_mohamed_elsaeed_salah.md` |
-| Nardeen Samy | `log_nardeen_samy.md` | `peer_nardeen_samy.md` |
+| Member | Contribution log |
+|---|---|
+| Saeed Sherif Mohamed | `log_saeed_sherif_mohamed.md` |
+| Mahmoud Mohamed | `log_mahmoud_mohamed.md` |
+| Mohamed Elsaeed Salah | `log_mohamed_elsaeed_salah.md` |
+| Nardeen Samy | `log_nardeen_samy.md` |

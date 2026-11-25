@@ -40,7 +40,7 @@ The main objectives are:
 | 7 | Ablation study | [`results/tables/ablation.md`](results/tables/ablation.md), [`docs/RESULTS.md`](docs/RESULTS.md) §7 |
 | 8 | Technical report | [`report/`](report) |
 | 9 | Presentation | [`presentation/`](presentation) (15 slides, one section per member) |
-| 10 | Live demonstration | [`demo/app.py`](demo/app.py) + run sheet [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md) |
+| 10 | Live demonstration | [`demo/app.py`](demo/app.py) |
 | 11 | README | this file |
 | 12 | Contribution log + peer evaluation | [`contributions/`](contributions) |
 
@@ -245,7 +245,7 @@ HTR_Project/
 ├── contributions/          Team summary, contribution-log and peer-evaluation templates
 ├── data/get_iam_sample.py  Saves one IAM test line for the demo
 ├── demo/app.py             Streamlit demo (all models + Compare All)
-├── docs/                   DATASET.md, MODELS.md, RESULTS.md, DEMO_SCRIPT.md
+├── docs/                   DATASET.md, MODELS.md, RESULTS.md
 ├── experiments/            Raw logs: training histories, test results, TrOCR predictions
 ├── notebooks/              Original exploratory notebook
 ├── presentation/           Slide deck source (project/deck.json, slides/*.html)
@@ -374,7 +374,8 @@ python -m src.analysis.error_analysis --predictions experiments/trocr_test_predi
 ### Reproduce everything end to end
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scriptseproduce_all.ps1            # add -SkipTraining to only evaluate
+powershell -ExecutionPolicy Bypass -File scripts
+eproduce_all.ps1            # add -SkipTraining to only evaluate
 ```
 
 ### Launch the Streamlit demo

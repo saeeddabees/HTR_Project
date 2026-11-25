@@ -13,9 +13,9 @@ Status of the 12 end-of-semester deliverables. ✅ = in the repo and done · ✏
 | 7 | Ablation study | Results and interpretation | `results/tables/ablation.md`, `docs/RESULTS.md` §7 | ✅ |
 | 8 | Technical report | 15-25 pages, section-4 structure | `report/HTR_AI403_Technical_Report_Formatted.pdf` | ✅ 17 pages, 9 figures added (sections 10-14) · original kept in `report/archive/` |
 | 9 | Presentation | 15 min, every member presents | `presentation/` (online deck, exportable to PPTX/PDF) | ✅ names and 4-person split in place · ✏️ rehearse timing, re-export the PPTX |
-| 10 | Live demonstration | 5 min, live | `demo/app.py`, `docs/DEMO_SCRIPT.md` | ✏️ download TrOCR checkpoint, record backup video, rehearse |
+| 10 | Live demonstration | 5 min, live | `demo/app.py` | ✏️ download TrOCR checkpoint, record backup video, rehearse |
 | 11 | README | Full run instructions | `README.md` | ✅ |
-| 12 | Contribution log + peer evaluation | One per student | `contributions/` | ✅ files ready for all 4 members · ✏️ each member enters their own hours, ratings and signature |
+| 12 | Contribution log + peer evaluation | One per student | `contributions/` | ✏️ logs in place for all 4 members, each member enters their own hours · ⚠️ peer evaluations were removed from the repo but are still required: submit them the way the instructor asks |
 
 ## Presentation timing (15 min)
 
