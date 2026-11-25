@@ -18,12 +18,12 @@ Deliverable 10. Run live during the presentation with `demo/app.py` (Streamlit).
 
 | Time | Who | Action | Say |
 |---|---|---|---|
-| 0:00-0:30 | Demo lead | App already open. Point at the title and the model selector. | "This is our recognizer. You upload one line of handwriting and pick a model." |
-| 0:30-1:30 | Demo lead | Upload `iam_test_sample.png`, choose **CNN-BiLSTM + Attention + Augmentation**, click *Recognize Text*. | "This is our best custom CTC model - 1.5 M parameters, 19% CER on the test set. Notice the time - a few milliseconds." Read the output against the ground truth. |
-| 1:30-2:30 | Demo lead | Same image, choose **TrOCR**. | "Now the fine-tuned TrOCR - 385 M parameters, 7% CER. Slower, but much more accurate." Point at inference time. |
-| 2:30-3:30 | Demo lead | Choose **Compare All** on the same image. | "Side by side: GRU → BiLSTM → attention → TrOCR. Each step in our hypotheses shows up as fewer errors." |
-| 3:30-4:30 | Demo lead | Upload the team member's own handwriting, Compare All. | "This line was written by us this morning - never seen in training." Comment honestly on mistakes. |
-| 4:30-5:00 | Demo lead | Upload the hard image, show a failure, then click *Download*. | "Here it fails - slant and punctuation, exactly the error types in our analysis. Output can be downloaded as text." |
+| 0:00-0:30 | Mohamed Elsaeed Salah | App already open. Point at the title and the model selector. | "This is our recognizer. You upload one line of handwriting and pick a model." |
+| 0:30-1:30 | Mohamed Elsaeed Salah | Upload `iam_test_sample.png`, choose **CNN-BiLSTM + Attention + Augmentation**, click *Recognize Text*. | "This is our best custom CTC model - 1.5 M parameters, 19% CER on the test set. Notice the time - a few milliseconds." Read the output against the ground truth. |
+| 1:30-2:30 | Mohamed Elsaeed Salah | Same image, choose **TrOCR**. | "Now the fine-tuned TrOCR - 385 M parameters, 7% CER. Slower, but much more accurate." Point at inference time. |
+| 2:30-3:30 | Mohamed Elsaeed Salah | Choose **Compare All** on the same image. | "Side by side: GRU → BiLSTM → attention → TrOCR. Each step in our hypotheses shows up as fewer errors." |
+| 3:30-4:30 | Nardeen Samy | Upload the team member's own handwriting, Compare All. | "This line was written by us this morning - never seen in training." Comment honestly on mistakes. |
+| 4:30-5:00 | Nardeen Samy | Upload the hard image, show a failure, then click *Download*. | "Here it fails - slant and punctuation, exactly the error types in our analysis. Output can be downloaded as text." |
 
 ## If something goes wrong
 
