@@ -37,11 +37,15 @@ Fill in the date and the hours you actually spent on each task.
 
 ## 4. Hardest problem I solved
 
-<!-- What went wrong, how you found it, how you fixed it. -->
+*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
+
+Making sure the CTC pipeline was correct before spending GPU time. CTC loss gives no error when input and target lengths do not match - the model just fails to learn. I wrote a check in `src/models/baseline.py` that trains on a single batch of four lines for 100 steps: if the loss falls and the predictions match the text, the data → model → CTC loss → decoder chain works. It also confirmed that the output length must be the image width divided by 4 (two 2×2 poolings). Later, while aggregating the test results, I found that `baseline_seed1` had been launched with `--seed 2`; we documented it instead of hiding it.
 
 ## 5. What I learned
 
-<!-- 3-5 sentences. -->
+*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
+
+How CTC learns an alignment without character positions, and why the blank symbol and repeat-merging are needed in decoding. A one-batch overfitting test is the fastest way to catch pipeline bugs. Reporting mean ± SD over three seeds matters: my baseline varied by 2.6 CER points between seeds, more than any other model.
 
 ## 6. Declaration
 

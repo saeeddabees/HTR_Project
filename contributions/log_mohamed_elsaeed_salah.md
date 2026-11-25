@@ -37,11 +37,15 @@ Fill in the date and the hours you actually spent on each task.
 
 ## 4. Hardest problem I solved
 
-<!-- What went wrong, how you found it, how you fixed it. -->
+*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
+
+Choosing augmentation that helps rather than hurts. Strong rotations or noise make lines that no longer look like IAM handwriting, so I kept it mild (±2° rotation, 0.9-1.1 brightness/contrast, light noise on 30% of images) and made sure it runs only on the training split, never on validation or test. Getting the attention block to train stably also needed a residual connection and LayerNorm around the multi-head attention.
 
 ## 5. What I learned
 
-<!-- 3-5 sentences. -->
+*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
+
+How self-attention lets every position in the line use the whole line, and how residual + LayerNorm keep it stable. Augmentation gave the biggest single gain (−2.45 CER points on validation), which showed me how much a small dataset overfits. The learning-rate study taught me to screen on one seed and confirm the winner on three.
 
 ## 6. Declaration
 

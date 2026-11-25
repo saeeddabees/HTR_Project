@@ -37,11 +37,15 @@ Fill in the date and the hours you actually spent on each task.
 
 ## 4. Hardest problem I solved
 
-<!-- What went wrong, how you found it, how you fixed it. -->
+*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
+
+Fitting a 385-million-parameter model on a single 16 GB Tesla T4. I used batch size 2 with 4-step gradient accumulation (effective batch 8), FP16 mixed precision and gradient checkpointing. Validation CER got worse in epoch 2 (5.77% → 6.53%), so the learning rate was lowered from 1e-5 to 5e-6, and epoch 3 gave the best result (4.86%). The final checkpoint was 1.43 GB, too large for GitHub, so we host it on Google Drive.
 
 ## 5. What I learned
 
-<!-- 3-5 sentences. -->
+*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
+
+How transfer learning changes the picture: starting from pretrained weights, TrOCR reached 7.0% test CER versus 19.4% for our best model trained from scratch. I learned practical memory-saving techniques for large models and why checkpoints must be selected on validation, not test, data.
 
 ## 6. Declaration
 

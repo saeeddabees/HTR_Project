@@ -37,11 +37,15 @@ Fill in the date and the hours you actually spent on each task.
 
 ## 4. Hardest problem I solved
 
-<!-- What went wrong, how you found it, how you fixed it. -->
+*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
+
+Making the BiLSTM comparison fair. The main BiLSTM runs used 20 epochs and batch 8, but the attention runs used 10 epochs and batch 4, so comparing their test scores mixed up the effect of attention with the effect of the training budget. I trained three extra BiLSTM runs (`ablation_bilstm_seed*`) with exactly the attention protocol, which gave a clean ablation: removing attention costs 1.45 CER points on validation.
 
 ## 5. What I learned
 
-<!-- 3-5 sentences. -->
+*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
+
+Why bidirectional context helps handwriting: the BiLSTM cut test CER from 29.0% to 24.8% over the GRU baseline. I also learned to control an experiment - change one thing at a time - and that a fair comparison sometimes needs extra runs rather than reusing old ones.
 
 ## 6. Declaration
 
