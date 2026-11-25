@@ -10,22 +10,21 @@ Shared equally with the team: Data pipeline and `docs/DATASET.md`; Training / ev
 
 ## 2. Work log
 
-Fill in the date and the hours you actually spent on each task.
 
 | Date | Hours | Task | Evidence |
 |---|---:|---|---|
-| | | Implemented `CRNNBiLSTM` | |
-| | | Trained the main BiLSTM (20 epochs, batch 8) on seeds 0-2 | |
-| | | Trained the ablation BiLSTM (10 epochs, batch 4) on seeds 0-2 to match the attention protocol | |
-| | | Evaluated the BiLSTM checkpoints on the test split | |
-| | | Shared: Data pipeline and `docs/DATASET.md` | |
-| | | Shared: Training / evaluation framework (`train.py`, `test.py`, metrics, CTC decoding) | |
-| | | Shared: Results, graphs and error analysis (`src/analysis/`, `results/`) | |
-| | | Shared: Streamlit demo (`demo/app.py`) | |
-| | | Shared: Technical report | |
-| | | Shared: Presentation | |
-| | | Shared: README and repository organisation | |
-| | **Total** | | |
+|16/11|50 min| Implemented `CRNNBiLSTM` | |
+|16/11|4 hours| Trained the main BiLSTM (20 epochs, batch 8) on seeds 0-2 | |
+|16/11|3.15 hours| Trained the ablation BiLSTM (10 epochs, batch 4) on seeds 0-2 to match the attention protocol | |
+|17/11|2.45 hours| Evaluated the BiLSTM checkpoints on the test split | |
+|17/11|1 hours | Shared: Data pipeline and `docs/DATASET.md` | |
+|17/11|4.75 hours| Shared: Training / evaluation framework (`train.py`, `test.py`, metrics, CTC decoding) | |
+|18/11|2.30 hours| Shared: Results, graphs and error analysis (`src/analysis/`, `results/`) | |
+|18/11|1.5 hours| Shared: Streamlit demo (`demo/app.py`) | |
+|19/11|2 hours| Shared: Technical report | |
+|19/11|1 hours| Shared: Presentation | |
+|19/11|1 hours| Shared: README and repository organisation | |
+| | 23.65 hours | | |
 
 ## 3. Code, experiments and documents I produced
 
@@ -37,18 +36,11 @@ Fill in the date and the hours you actually spent on each task.
 
 ## 4. Hardest problem I solved
 
-*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
-
 Making the BiLSTM comparison fair. The main BiLSTM runs used 20 epochs and batch 8, but the attention runs used 10 epochs and batch 4, so comparing their test scores mixed up the effect of attention with the effect of the training budget. I trained three extra BiLSTM runs (`ablation_bilstm_seed*`) with exactly the attention protocol, which gave a clean ablation: removing attention costs 1.45 CER points on validation.
 
 ## 5. What I learned
 
-*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
 
 Why bidirectional context helps handwriting: the BiLSTM cut test CER from 29.0% to 24.8% over the GRU baseline. I also learned to control an experiment - change one thing at a time - and that a fair comparison sometimes needs extra runs rather than reusing old ones.
 
-## 6. Declaration
 
-I confirm this log is an accurate record of my own contribution.
-
-Signature: ____________________  Date: ____________
