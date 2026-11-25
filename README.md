@@ -369,7 +369,7 @@ CTC checkpoints and experiment artifacts are included in the repository.
 The large TrOCR model checkpoint (`trocr_best.pt`, approximately 1.43 GB) is hosted externally rather than committed to GitHub.
 
 **Google Drive download link:**  
-[Add the shared TrOCR checkpoint link here]
+[https://drive.google.com/file/d/11m4Xa1et7pTV5gQFrnLYJaCcPRmVXaNE/view?usp=sharing]
 
 After downloading, place the file at:
 
