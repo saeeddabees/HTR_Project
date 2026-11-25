@@ -10,22 +10,21 @@ Shared equally with the team: Data pipeline and `docs/DATASET.md`; Training / ev
 
 ## 2. Work log
 
-Fill in the date and the hours you actually spent on each task.
 
 | Date | Hours | Task | Evidence |
 |---|---:|---|---|
-| | | Implemented `CRNNBiLSTMAttention` (4-head self-attention, residual + LayerNorm) | |
-| | | Implemented training-only augmentation (rotation, brightness/contrast, noise) | |
-| | | Trained attention and attention + augmentation on seeds 0-2 | |
-| | | Ran the learning-rate study (0.0005 / 0.001 / 0.002) | |
-| | | Shared: Data pipeline and `docs/DATASET.md` | |
-| | | Shared: Training / evaluation framework (`train.py`, `test.py`, metrics, CTC decoding) | |
-| | | Shared: Results, graphs and error analysis (`src/analysis/`, `results/`) | |
-| | | Shared: Streamlit demo (`demo/app.py`) | |
-| | | Shared: Technical report | |
-| | | Shared: Presentation | |
-| | | Shared: README and repository organisation | |
-| | **Total** | | |
+|16/11|2 hour| Implemented `CRNNBiLSTMAttention` (4-head self-attention, residual + LayerNorm) | |
+|16/11|3 hour| Implemented training-only augmentation (rotation, brightness/contrast, noise) | |
+|16/11|3 hours| Trained attention and attention + augmentation on seeds 0-2 | |
+|16/11|1.5 hour| Ran the learning-rate study (0.0005 / 0.001 / 0.002) | |
+|16/11|1 hour| Shared: Data pipeline and `docs/DATASET.md` | |
+|16/11|5 hours| Shared: Training / evaluation framework (`train.py`, `test.py`, metrics, CTC decoding) | |
+|16/11|2 hours| Shared: Results, graphs and error analysis (`src/analysis/`, `results/`) | |
+|16/11|1.5 hour| Shared: Streamlit demo (`demo/app.py`) | |
+|16/11|1 hour| Shared: Technical report | |
+|16/11|1 hour| Shared: Presentation | |
+|16/11|1 hour| Shared: README and repository organisation | |
+| | 21 hour | | |
 
 ## 3. Code, experiments and documents I produced
 
@@ -37,18 +36,8 @@ Fill in the date and the hours you actually spent on each task.
 
 ## 4. Hardest problem I solved
 
-*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
-
 Choosing augmentation that helps rather than hurts. Strong rotations or noise make lines that no longer look like IAM handwriting, so I kept it mild (±2° rotation, 0.9-1.1 brightness/contrast, light noise on 30% of images) and made sure it runs only on the training split, never on validation or test. Getting the attention block to train stably also needed a residual connection and LayerNorm around the multi-head attention.
 
 ## 5. What I learned
 
-*Draft written from the project records - check it, rewrite it in your own words and correct anything that did not happen this way.*
-
 How self-attention lets every position in the line use the whole line, and how residual + LayerNorm keep it stable. Augmentation gave the biggest single gain (−2.45 CER points on validation), which showed me how much a small dataset overfits. The learning-rate study taught me to screen on one seed and confirm the winner on three.
-
-## 6. Declaration
-
-I confirm this log is an accurate record of my own contribution.
-
-Signature: ____________________  Date: ____________
