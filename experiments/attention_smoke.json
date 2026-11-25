@@ -1,0 +1,24 @@
+{
+  "run": "attention_smoke",
+  "args": {
+    "model": "attention",
+    "epochs": 1,
+    "lr": 0.001,
+    "batch_size": 2,
+    "seed": 0,
+    "subset": 300,
+    "name": "attention_smoke"
+  },
+  "params": 1484944,
+  "train_time_sec": 9.056501626968384,
+  "device": "cuda",
+  "best_val_cer": 0.9527261491657556,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 5.552536738713583,
+      "val_cer": 0.9527261491657556,
+      "val_wer": 1.0010112359550563
+    }
+  ]
+}

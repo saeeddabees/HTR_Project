@@ -1,0 +1,7 @@
+{
+    "model": "attention_aug",
+    "checkpoint": "checkpoints/attention_aug_seed1.pt",
+    "test_samples": 2915,
+    "test_cer": 0.1837599012856745,
+    "test_wer": 0.5135166403146812
+}

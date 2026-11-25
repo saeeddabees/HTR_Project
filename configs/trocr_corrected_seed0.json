@@ -1,0 +1,18 @@
+
+{
+    "experiment_name": "trocr_corrected_seed0",
+    "model": "TrOCR",
+    "architecture": "TrOCR-base-stage1 (Vision Encoder-Decoder Transformer)",
+    "epoch_recorded": 1,
+    "train_loss": 0.6179,
+    "validation_cer": 0.05773161572467557,
+    "validation_wer": 0.13146067415730336,
+    "training_samples": 6482,
+    "validation_samples": 976,
+    "batch_size": 2,
+    "effective_batch_size": 8,
+    "learning_rate": 0.00001,
+    "optimizer": "AdamW",
+    "gpu": "NVIDIA Tesla T4",
+    "training_time_minutes": 13.5
+}

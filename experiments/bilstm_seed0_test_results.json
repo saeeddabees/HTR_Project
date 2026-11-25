@@ -1,0 +1,7 @@
+{
+    "model": "bilstm",
+    "checkpoint": "checkpoints/bilstm_seed0.pt",
+    "test_samples": 2915,
+    "test_cer": 0.24530509891334634,
+    "test_wer": 0.6238479040530639
+}

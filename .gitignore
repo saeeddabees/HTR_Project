@@ -1,0 +1,41 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+
+# Dataset cache
+.cache/
+huggingface/
+data/raw/
+data/cache/
+
+# Large temporary model files
+*.safetensors.tmp
+*.pt.tmp
+
+# Exclude only TrOCR large checkpoint
+trocr_best.pt
+**/trocr_best.pt
+/checkpoints/trocr_best.pt

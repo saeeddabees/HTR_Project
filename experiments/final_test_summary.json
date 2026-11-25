@@ -1,0 +1,124 @@
+{
+    "Baseline CNN-GRU": {
+        "seeds": [
+            {
+                "seed": 0,
+                "file": "baseline_seed0_test_results.json",
+                "cer": 30.669904071965924,
+                "wer": 73.54517758667232
+            },
+            {
+                "seed": 1,
+                "file": "baseline_seed1_test_results.json",
+                "cer": 28.288819010468497,
+                "wer": 69.57695422467317
+            },
+            {
+                "seed": 2,
+                "file": "baseline_seed2_test_results.json",
+                "cer": 28.037256697050513,
+                "wer": 69.49982646253518
+            }
+        ],
+        "mean_cer": 28.998659926494977,
+        "std_cer": 1.452795114498681,
+        "mean_wer": 70.87398609129356,
+        "std_wer": 2.3136411080072428,
+        "best_seed": 2,
+        "best_seed_cer": 28.037256697050513,
+        "best_seed_wer": 69.49982646253518
+    },
+    "CNN-BiLSTM": {
+        "seeds": [
+            {
+                "seed": 0,
+                "file": "bilstm_seed0_test_results.json",
+                "cer": 24.530509891334635,
+                "wer": 62.38479040530639
+            },
+            {
+                "seed": 1,
+                "file": "bilstm_seed1_test_results.json",
+                "cer": 25.051944433387735,
+                "wer": 63.302610774748366
+            },
+            {
+                "seed": 2,
+                "file": "bilstm_seed2_test_results.json",
+                "cer": 24.73828762488556,
+                "wer": 62.61231730361344
+            }
+        ],
+        "mean_cer": 24.77358064986931,
+        "std_cer": 0.26250274973971083,
+        "mean_wer": 62.7665728278894,
+        "std_wer": 0.4779588190606907,
+        "best_seed": 0,
+        "best_seed_cer": 24.530509891334635,
+        "best_seed_wer": 62.38479040530639
+    },
+    "CNN-BiLSTM-Attention": {
+        "seeds": [
+            {
+                "seed": 0,
+                "file": "attention_seed0_test_results.json",
+                "cer": 21.868407435417744,
+                "wer": 57.87281632023446
+            },
+            {
+                "seed": 1,
+                "file": "attention_seed1_test_results.json",
+                "cer": 22.24734307208534,
+                "wer": 58.25845513092438
+            },
+            {
+                "seed": 2,
+                "file": "attention_seed2_test_results.json",
+                "cer": 22.740118616407276,
+                "wer": 59.26497242682503
+            }
+        ],
+        "mean_cer": 22.28528970797012,
+        "std_cer": 0.4370927317478184,
+        "mean_wer": 58.465414625994626,
+        "std_wer": 0.7187828814942318,
+        "best_seed": 0,
+        "best_seed_cer": 21.868407435417744,
+        "best_seed_wer": 57.87281632023446
+    },
+    "Attention + Augmentation": {
+        "seeds": [
+            {
+                "seed": 0,
+                "file": "attention_aug_seed0_test_results.json",
+                "cer": 19.96656450264698,
+                "wer": 54.3866414715977
+            },
+            {
+                "seed": 1,
+                "file": "attention_aug_seed1_test_results.json",
+                "cer": 18.375990128567448,
+                "wer": 51.351664031468125
+            },
+            {
+                "seed": 2,
+                "file": "attention_aug_seed2_test_results.json",
+                "cer": 19.827249930342713,
+                "wer": 55.10007327137403
+            }
+        ],
+        "mean_cer": 19.38993485385238,
+        "std_cer": 0.8808604128713765,
+        "mean_wer": 53.612792924813284,
+        "std_wer": 1.990420593109218,
+        "best_seed": 1,
+        "best_seed_cer": 18.375990128567448,
+        "best_seed_wer": 51.351664031468125
+    },
+    "TrOCR": {
+        "test_cer": 7.0167,
+        "test_wer": 14.8664,
+        "test_samples": 2915,
+        "number_of_runs": 1
+    }
+}

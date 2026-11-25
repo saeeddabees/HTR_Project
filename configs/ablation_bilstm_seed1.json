@@ -1,0 +1,22 @@
+
+{
+    "experiment_name": "ablation_bilstm_seed1",
+    "model": "bilstm",
+    "architecture": "CNN-BiLSTM",
+    "experiment_type": "Ablation Study",
+    "epochs": 10,
+    "batch_size": 4,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "loss": "CTC",
+    "seed": 1,
+    "subset": 0,
+    "parameters": 1221264,
+    "best_epoch": 10,
+    "best_validation_cer": 0.18636212387697865,
+    "validation_wer_at_best_cer": 0.5426966292134832,
+    "best_validation_wer": 0.5426966292134832,
+    "best_wer_epoch": 10,
+    "training_time_seconds": 586.7892591953278,
+    "device": "cuda"
+}

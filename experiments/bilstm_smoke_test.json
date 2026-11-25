@@ -1,0 +1,24 @@
+{
+  "run": "bilstm_smoke_test",
+  "args": {
+    "model": "bilstm",
+    "epochs": 1,
+    "lr": 0.001,
+    "batch_size": 8,
+    "seed": 0,
+    "subset": 300,
+    "name": "bilstm_smoke_test"
+  },
+  "params": 1221264,
+  "train_time_sec": 7.306809186935425,
+  "device": "cuda",
+  "best_val_cer": 1.0,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 4.612591774840104,
+      "val_cer": 1.0,
+      "val_wer": 1.0
+    }
+  ]
+}

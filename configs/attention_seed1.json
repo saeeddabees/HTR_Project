@@ -1,0 +1,22 @@
+
+{
+    "experiment_name": "attention_seed1",
+    "model": "attention",
+    "architecture": "CNN-BiLSTM + Multi-Head Attention",
+    "epochs": 10,
+    "batch_size": 4,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "loss": "CTC",
+    "seed": 1,
+    "augmentation": false,
+    "subset": 0,
+    "parameters": 1484944,
+    "best_epoch": 9,
+    "best_validation_cer": 0.16613585587298568,
+    "validation_wer_at_best_cer": 0.5034831460674157,
+    "best_validation_wer": 0.4996629213483146,
+    "best_wer_epoch": 8,
+    "training_time_seconds": 594.0074138641357,
+    "device": "cuda"
+}

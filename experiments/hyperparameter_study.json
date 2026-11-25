@@ -1,0 +1,42 @@
+[
+    {
+        "Run":"hp_attention_lr0005",
+        "Learning Rate":0.0005,
+        "Seed":0,
+        "Best Epoch":9,
+        "Best Validation CER (%)":16.6801350002,
+        "Training Time (sec)":684.1951692104
+    },
+    {
+        "Run":"hp_attention_lr001",
+        "Learning Rate":0.001,
+        "Seed":0,
+        "Best Epoch":10,
+        "Best Validation CER (%)":16.1976517564,
+        "Training Time (sec)":670.681422472
+    },
+    {
+        "Run":"hp_attention_lr002",
+        "Learning Rate":0.002,
+        "Seed":0,
+        "Best Epoch":9,
+        "Best Validation CER (%)":14.995008794,
+        "Training Time (sec)":679.470618248
+    },
+    {
+        "Run":"hp_attention_lr002_seed1",
+        "Learning Rate":0.002,
+        "Seed":1,
+        "Best Epoch":9,
+        "Best Validation CER (%)":15.0591814422,
+        "Training Time (sec)":671.4510653019
+    },
+    {
+        "Run":"hp_attention_lr002_seed2",
+        "Learning Rate":0.002,
+        "Seed":2,
+        "Best Epoch":10,
+        "Best Validation CER (%)":14.1702714265,
+        "Training Time (sec)":685.4673457146
+    }
+]

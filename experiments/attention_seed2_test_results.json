@@ -1,0 +1,8 @@
+{
+    "model": "attention",
+    "seed": 2,
+    "checkpoint": "checkpoints\\attention_seed2.pt",
+    "test_samples": 2915,
+    "test_cer": 0.22740118616407276,
+    "test_wer": 0.5926497242682504
+}

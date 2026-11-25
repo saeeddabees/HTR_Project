@@ -1,0 +1,7 @@
+{
+    "model": "baseline",
+    "checkpoint": "checkpoints/baseline_seed0.pt",
+    "test_samples": 2915,
+    "test_cer": 0.30669904071965925,
+    "test_wer": 0.7354517758667233
+}

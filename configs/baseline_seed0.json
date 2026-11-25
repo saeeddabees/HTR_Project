@@ -1,0 +1,19 @@
+{
+    "experiment_name": "baseline_seed0",
+    "model": "baseline",
+    "architecture": "CNN-GRU",
+    "epochs": 20,
+    "batch_size": 8,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "loss": "CTC",
+    "seed": 0,
+    "augmentation": false,
+    "subset": 0,
+    "parameters": 472464,
+    "best_epoch": 17,
+    "best_validation_cer": 0.25348196035556403,
+    "validation_wer_at_best_cer": 0.6768539325842696,
+    "training_time_seconds": 916.8702886104584,
+    "device": "cuda"
+}

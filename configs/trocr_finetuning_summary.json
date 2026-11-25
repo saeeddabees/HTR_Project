@@ -1,0 +1,38 @@
+
+{
+    "experiment_name": "trocr_finetuning_summary",
+    "model": "TrOCR",
+    "architecture": "TrOCR-base-stage1 (Vision Encoder-Decoder Transformer)",
+    "pretrained_model": "microsoft/trocr-base-stage1",
+    "experiment_type": "Fine-tuning",
+    "epochs_completed": 5,
+    "best_epoch": 3,
+    "best_validation_cer": 0.048557303798070064,
+    "best_validation_wer": 0.11404494382022472,
+    "training_samples": 6482,
+    "validation_samples": 976,
+    "batch_size": 2,
+    "effective_batch_size": 8,
+    "learning_rate_initial": 0.00001,
+    "learning_rate_after_epoch_2": 0.000005,
+    "optimizer": "AdamW",
+    "gpu": "NVIDIA Tesla T4",
+    "training_time_minutes": 67.5,
+    "history": {
+        "epoch_1": {
+            "train_loss": 0.6179,
+            "validation_cer": 0.0577,
+            "validation_wer": 0.1315
+        },
+        "epoch_2": {
+            "train_loss": 0.2928,
+            "validation_cer": 0.0653,
+            "validation_wer": 0.1479
+        },
+        "epoch_3": {
+            "train_loss": 0.1263,
+            "validation_cer": 0.048557303798070064,
+            "validation_wer": 0.11404494382022472
+        }
+    }
+}
