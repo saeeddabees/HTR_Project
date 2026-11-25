@@ -29,7 +29,7 @@ Every run (23 total: 12 main CTC, 3 ablation, 5 learning-rate, 2 smoke tests, 1 
 | hp_attention_lr002_seed1 | 0.002 | 1 | 15.06% |
 | hp_attention_lr002_seed2 | 0.002 | 2 | 14.17% |
 
-LR 0.002 gives 14.74 ± 0.48% validation CER over three seeds, the best of the three rates tried.
+LR 0.002 gives 14.74 ± 0.50% validation CER over three seeds, the best of the three rates tried.
 
 ![Learning-rate study](../results/figures/05_hyperparameter_study.png)
 

@@ -165,7 +165,7 @@ The learning rates 0.0005 and 0.001 were screened using seed 0. The selected lea
 
 For the three runs using learning rate 0.002:
 
-**Mean validation CER: 14.74% ± 0.48 percentage points.**
+**Mean validation CER: 14.74% ± 0.50 percentage points.**
 
 The experiment runner is available at:
 
