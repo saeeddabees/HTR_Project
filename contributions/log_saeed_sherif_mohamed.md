@@ -14,15 +14,15 @@ Shared equally with the team: Data pipeline and `docs/DATASET.md`; Training / ev
 |---|---:|---|---|
 |16/11|1 hour| Implemented `BaselineCNNGRU` and verified the pipeline by overfitting one batch | |
 |16/11|5 hours| Trained the baseline for 20 epochs on seeds 0-2 (`baseline_seed*`) | |
-|16/11|3 hours| Evaluated the three checkpoints on the test split (`*_test_results.json`) | |
-|16/11|45 mins| Note: the `baseline_seed1` log records `--seed 2`; to re-run with seed 1 if time allows | |
-|16/11|1 hour| Shared: Data pipeline and `docs/DATASET.md` | |
-|16/11|4.75 hours| Shared: Training / evaluation framework (`train.py`, `test.py`, metrics, CTC decoding) | |
-|16/11|1.5 hours| Shared: Results, graphs and error analysis (`src/analysis/`, `results/`) | |
-|16/11|2 hour| Shared: Streamlit demo (`demo/app.py`) | |
-|16/11|30 mins| Shared: Technical report | |
-|16/11|1 hour| Shared: Presentation | |
-|16/11|1.5 hour| Shared: README and repository organisation | |
+|17/11|3 hours| Evaluated the three checkpoints on the test split (`*_test_results.json`) | |
+|17/11|45 mins| Note: the `baseline_seed1` log records `--seed 2`; to re-run with seed 1 if time allows | |
+|17/11|1 hour| Shared: Data pipeline and `docs/DATASET.md` | |
+|18/11|4.75 hours| Shared: Training / evaluation framework (`train.py`, `test.py`, metrics, CTC decoding) | |
+|18/11|1.5 hours| Shared: Results, graphs and error analysis (`src/analysis/`, `results/`) | |
+|18/11|2 hour| Shared: Streamlit demo (`demo/app.py`) | |
+|18/11|30 mins| Shared: Technical report | |
+|19/11|1 hour| Shared: Presentation | |
+|19/11|1.5 hour| Shared: README and repository organisation | |
 || 22.5 hours | | |
 
 ## 3. Code, experiments and documents I produced
