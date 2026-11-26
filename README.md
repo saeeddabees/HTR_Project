@@ -44,8 +44,6 @@ The main objectives are:
 | 11 | README | this file |
 | 12 | Contribution log + peer evaluation | [`contributions/`](contributions) |
 
-Full checklist: [`DELIVERABLES.md`](DELIVERABLES.md).
-
 ---
 
 ## 2. Dataset
@@ -265,7 +263,6 @@ HTR_Project/
 ├── test_samples/           Demo image + ground truth
 ├── trocr_train.py          TrOCR fine-tuning
 ├── vocab.json              CTC character vocabulary
-├── DELIVERABLES.md         12-item submission checklist
 └── requirements.txt
 ```
 
