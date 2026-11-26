@@ -381,7 +381,7 @@ eproduce_all.ps1            # add -SkipTraining to only evaluate
 python -m streamlit run demo/app.py
 ```
 
-The demo supports handwritten line-image input and model prediction comparison.
+The demo supports handwritten line-image input and model prediction comparison. Ready-made test lines (easy, medium and hard, each with its correct text) are in [`test_samples/`](test_samples).
 
 ---
 
