@@ -15,15 +15,15 @@ Shared equally with the team: Data pipeline and `docs/DATASET.md`; Training / ev
 |---|---:|---|---|
 |16/11|2 hour| Implemented `CRNNBiLSTMAttention` (4-head self-attention, residual + LayerNorm) | |
 |16/11|3 hour| Implemented training-only augmentation (rotation, brightness/contrast, noise) | |
-|16/11|3 hours| Trained attention and attention + augmentation on seeds 0-2 | |
-|16/11|1.5 hour| Ran the learning-rate study (0.0005 / 0.001 / 0.002) | |
-|16/11|1 hour| Shared: Data pipeline and `docs/DATASET.md` | |
-|16/11|5 hours| Shared: Training / evaluation framework (`train.py`, `test.py`, metrics, CTC decoding) | |
-|16/11|2 hours| Shared: Results, graphs and error analysis (`src/analysis/`, `results/`) | |
-|16/11|1.5 hour| Shared: Streamlit demo (`demo/app.py`) | |
-|16/11|1 hour| Shared: Technical report | |
-|16/11|1 hour| Shared: Presentation | |
-|16/11|1 hour| Shared: README and repository organisation | |
+|17/11|3 hours| Trained attention and attention + augmentation on seeds 0-2 | |
+|17/11|1.5 hour| Ran the learning-rate study (0.0005 / 0.001 / 0.002) | |
+|18/11|1 hour| Shared: Data pipeline and `docs/DATASET.md` | |
+|18/11|5 hours| Shared: Training / evaluation framework (`train.py`, `test.py`, metrics, CTC decoding) | |
+|18/11|2 hours| Shared: Results, graphs and error analysis (`src/analysis/`, `results/`) | |
+|19/11|1.5 hour| Shared: Streamlit demo (`demo/app.py`) | |
+|19/11|1 hour| Shared: Technical report | |
+|19/11|1 hour| Shared: Presentation | |
+|19/11|1 hour| Shared: README and repository organisation | |
 | | 21 hour | | |
 
 ## 3. Code, experiments and documents I produced
